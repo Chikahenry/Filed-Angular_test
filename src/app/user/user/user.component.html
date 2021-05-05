@@ -1,0 +1,88 @@
+<div class="container mt-5">
+  <div class="content-wrapper">
+    <div class="main-content">
+      <div class="col-md-12">
+        <div class="row pt-5">
+          <div class="col-md-6" >
+            <img class="col-12" src="../../../assets/images/undrawmobile.svg"/>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="form">
+              <div class="card shadow p-4" style="border-radius: 20px;">
+                <div class="card-body text-center">
+                  <h3>
+                    We'll be in touch to get your trial set up.
+                  </h3>
+                  <p class="text-center">Fill the form</p>
+                    <form [formGroup]="userForm" (ngSubmit)="postPayment(userForm.value)">
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <input type="text" placeholder="First name* "  (keypress)="omit_special_char($event)"
+                            class=" form-control" formControlName="firstname" id="firstname" name="firstname"
+                            [ngClass]="{ 'is-invalid': submitted &amp;&amp; userForm.controls.firstname.errors }" />
+
+                          <div *ngIf="submitted &amp;&amp; userForm.controls.firstname.errors" class="text-danger error">
+                            <div *ngIf="userForm.controls.firstname.errors.required">First Name is required</div>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6">
+                          <input type="text" placeholder="Last name* "  (keypress)="omit_special_char($event)" class=" form-control" formControlName="lastname" id="lastname"
+                            name="lastname" [ngClass]="{ 'is-invalid': submitted &amp;&amp; userForm.controls.lastname.errors }" />
+
+                          <div *ngIf="submitted &amp;&amp; userForm.controls.lastname.errors" class="text-danger error">
+                            <div *ngIf="userForm.controls.lastname.errors.required">Last Name is required</div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <div class="mb-4">
+                        <input type="email" placeholder="Email*" class=" form-control" maxlength="50" formControlName="email" id="email"
+                          name="email" [ngClass]="{ 'is-invalid': submitted &amp;&amp; userForm.controls.email.errors }" />
+
+                        <div *ngIf="submitted &amp;&amp; userForm.controls.email.errors" class="text-danger error">
+                          <div *ngIf="userForm.controls.email.errors.required">Email is required</div>
+                          <div *ngIf="userForm.controls.email.errors.pattern">Valid email required</div>
+                        </div>
+
+                      </div>
+
+                      <div class="mb-4">
+                        <input type="text" placeholder="Monthlty Advertizing Budget* " class=" form-control" formControlName="monthlyBudget" id="monthlyBudget" maxlength="12"
+                          name="monthlyBudget" [ngClass]="{ 'is-invalid': submitted &amp;&amp; userForm.controls.monthlyBudget.errors }" />
+
+                        <div *ngIf="submitted &amp;&amp; userForm.controls.monthlyBudget.errors" class="text-danger error">
+                          <div *ngIf="userForm.controls.monthlyBudget.errors.required">Monthy Budget is required</div>
+                          <div *ngIf="userForm.controls.monthlyBudget.errors.pattern">Monthy Budget can only contain Numbers</div>
+                        </div>
+
+                      </div>
+                      <div class="mb-4">
+                        <input type="text" placeholder="Phone number* " class=" form-control" formControlName="phoneNumber"
+                          id="phoneNumber" name="phoneNumber" maxlength="11"
+                          [ngClass]="{ 'is-invalid': submitted &amp;&amp; userForm.controls.phoneNumber.errors }" />
+
+                        <div *ngIf="submitted &amp;&amp; userForm.controls.phoneNumber.errors" class="text-danger error">
+                          <div *ngIf="userForm.controls.phoneNumber.errors.required">Phone number is required</div>
+                          <div *ngIf="userForm.controls.phoneNumber.errors.minlength">Phone number must be 11 digit</div>
+                          <div *ngIf="userForm.controls.phoneNumber.errors.maxlength">Maximum of 11 digits</div>
+                        </div>
+
+                      </div>
+
+                      <button class="btn mb-4 btn-block btn-success" type="submit">Submit</button>
+                     </form>
+                  <a [routerLink]="['/']" class="btn btn-danger btn-block">back </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

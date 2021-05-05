@@ -1,0 +1,12 @@
+
+
+
+@media screen and  (min-device-width: 100px) and (max-device-width: 420px)
+{
+    .file{
+      width: 400px !important;
+    }
+
+
+
+}

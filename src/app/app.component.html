@@ -1,0 +1,72 @@
+<div class="container mt-5" *ngIf="show == false">
+  <div class="content-wrapper mt-5">
+    <div class="main-content mt-5">
+      <div class="col-lg-12 file">
+          <div class="row">
+          <div class="col-md-7 col-12 col-sm-12">
+            <div class=""><img src="../assets/images/filed-logo.jfif" alt="Filed logo" /></div>
+            <div class="mb-5">
+              <h1 class="mb-3" >Book a demo today and get two weeks <span class="text-primary">free.</span> Why?</h1>
+              <h5>Because Our AI-Powered Software <br> Will Exceed Your Marketing Goals.</h5>
+            </div>
+          </div>
+
+          <div class="mb-3 col-sm-10 col-md-5 mt-5">
+            <div class="form mt-5">
+              <div class="card shadow">
+                <div class="card-body text-center">
+                  <h3 class="mb-4 mt-4">
+                    Let's Start
+                  </h3>
+                  <a [routerLink]="['/create-user']" class="btn mt-5 btn-danger btn-block"> Get Started </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div  class=" mb-5 justify-content-center" >
+          <div class="card p-4" style="border-radius: 20px;">
+            <div class="card-header">
+              <h4 class="">List of Users</h4>
+            </div>
+            <div class="card-body" style="overflow-x: scroll;">
+              <table class="table table-bordered table-condensed" *ngIf="payments$" width="100%">
+                <thead>
+                  <tr>
+                    <th>S/N</th>
+                    <th>First Name</th>
+                    <th>Surname</th>
+
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Monthly Advertizing Budget</th>
+                    <!-- <th>Employment History</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let mydata of payments$ | async; index as i">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ mydata.FirstName | titlecase }}</td>
+                    <td>{{ mydata.LastName }}</td>
+
+                    <td>{{ mydata.PhoneNumber }}</td>
+                    <td>{{ mydata.Email }}</td>
+                    <td>{{ mydata.MonthlyBudget }}</td>
+
+
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="show">
+  <router-outlet  ></router-outlet>
+
+</div>
